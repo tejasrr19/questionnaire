@@ -1,11 +1,21 @@
 // App.jsx
-import React from "react";
-import config from "./config.json";
+
+// libraries
+import React from 'react';
 import _ from 'underscore';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import {BaseCard} from "simple-react-card";
+// local imports
+import config from './config.json';
 import Utils from './lib/util.js';
+
+//components
+import Navbar from './components/Navbar.jsx';
+
+//styles
+import '../css/site.css';
 
 export default class App extends React.Component {
   constructor() {
@@ -127,39 +137,45 @@ export default class App extends React.Component {
     ];
 
     return (
-      <MuiThemeProvider>
       <div>
-        <h1>{this.state.question}</h1>
-        <form onSubmit={this.handleFormSubmit}>
-          {
-            this.state.options.map((option, index) => {
-              return(
-                <div key={index} className="radio">
-                  <label>
-                    <input type="radio"
-                      value={option.answer}
-                      checked={this.state.selectedOption === option.answer}
-                      onChange={this.handleOptionChange}
-                    />
-                    {option.answer}
-                  </label>
-                </div>
-              )
-            })
-          }
-          <button className="btn btn-default" type="submit">Save</button>
-        </form>
-        <Dialog
-          title="Thank you for your response!"
-          actions={actions}
-          modal={false}
-          open={this.state.open}
-          onRequestClose={this.handleClose}
-        >
-          <h3>{this.state.answer}</h3> has been answered <h3>{this.state.answerCount}</h3> times.
-        </Dialog>
+        <Navbar/>
+        <MuiThemeProvider>
+          <BaseCard className="card">
+            <div className="questionnaire">
+              <h1>{this.state.question}</h1>
+              <form onSubmit={this.handleFormSubmit}>
+                {
+                  this.state.options.map((option, index) => {
+                    return(
+                      <div key={index} className="radio">
+                        <label>
+                          <input type="radio"
+                            className="radio-item"
+                            value={option.answer}
+                            checked={this.state.selectedOption === option.answer}
+                            onChange={this.handleOptionChange}
+                          />
+                          {option.answer}
+                        </label>
+                      </div>
+                    )
+                  })
+                }
+                <button className="btn btn-default" type="submit">Save</button>
+              </form>
+              <Dialog
+                title="Thank you for your response!"
+                actions={actions}
+                modal={false}
+                open={this.state.open}
+                onRequestClose={this.handleClose}
+              >
+                <h3>{this.state.answer}</h3> has been answered <h3>{this.state.answerCount}</h3> times.
+              </Dialog>
+            </div>
+          </BaseCard>
+        </MuiThemeProvider>
       </div>
-    </MuiThemeProvider>
     );
   }
 }

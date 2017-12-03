@@ -1,4 +1,7 @@
 const webpack = require('webpack');
+const path = require('path');
+const ROOT_PATH = path.resolve(__dirname);
+
 const config = {
     entry:  __dirname + '/static/js/index.jsx',
     output: {
@@ -18,6 +21,15 @@ const config = {
       {
         test: /\.json$/,
         loaders: ['json-loader']
+      },
+      {
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        loader: 'url-loader',
+        include: path.resolve(ROOT_PATH, 'static/public/img')
       }
     ]
     },

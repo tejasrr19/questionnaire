@@ -1,1 +1,22 @@
 /* todo: implement any css code to style the page */
+body {
+  background-image: url('../public/img/grid.jpg');
+  background-color: coral;
+}
+
+.card {
+  width: 600px;
+  height: 300px;
+
+  position: absolute;
+  top:300;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: auto;
+}
+
+.radio-item {
+  font-weight: 300;
+}
