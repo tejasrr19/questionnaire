@@ -92,7 +92,8 @@ class Answer(Resource):
 
     def put(self, answer_id):
         answer = answers[answer_id]
-        data = request.get_json()
+        data = request.get_json(force=True)
+        print data
         values = {k: data.get(k, v) for k, v in answer.items()}
         answers[answer_id].update(values)
         return values
@@ -149,7 +150,7 @@ class Questions(Resource):
         for question in  questions.values():
             question = question.copy()
             question['answers'] = [ans for ans in answers.values() if ans['question_id'] == question['id']]
-            output = question
+            output.append(question)
         return output
 
     def post(self):
