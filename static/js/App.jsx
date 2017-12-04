@@ -37,7 +37,7 @@ export default class App extends React.Component {
     this.handleAnotherQuestion = this.handleAnotherQuestion.bind(this);
   }
 
-  async componentWillMount() {
+  async componentDidMount() {
 
     await this.getQuestions();
 
@@ -72,7 +72,7 @@ export default class App extends React.Component {
   findRandomQuestion(newState) {
     this.setState(newState, () => {
       var randomIndex = this.questions.findIndex(x => x.question === newState.question);
-      console.log('Random Index ====>', randomIndex);
+      console.log('Random Index Test====>', randomIndex);
       if (randomIndex > -1) {
         this.questions.splice(randomIndex, 1);
         console.log(this.questions.length);
@@ -146,6 +146,7 @@ export default class App extends React.Component {
   }
 
   render () {
+    console.log('Initial Question ---->', this.state.question);
     const actions = [
       <FlatButton
         label="Answer another question?"
@@ -158,7 +159,6 @@ export default class App extends React.Component {
         onClick={this.handleClose}
       />,
     ];
-
     return (
       <div>
         <Navbar/>

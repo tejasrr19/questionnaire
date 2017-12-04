@@ -186,4 +186,4 @@ def get_resource(path):
     return Response(content, mimetype=mimetypes[os.path.splitext(path)[1]])
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, threaded=True)
