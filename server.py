@@ -150,6 +150,7 @@ class Questions(Resource):
         for question in  questions.values():
             question = question.copy()
             question['answers'] = [ans for ans in answers.values() if ans['question_id'] == question['id']]
+            # append each question to the output array instead of just returning the last question.
             output.append(question)
         return output
 
