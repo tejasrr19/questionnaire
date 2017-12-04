@@ -24,7 +24,24 @@ Navigating to `http://localhost:5000` or `http://127.0.0.1:5000` should bring up
 
 1. The `/questions` endpoint returned only the last question instead of an array of questions. This is fixed by appending each item into the `output` array.
 
+2. Handled Flash requests concurrently by setting `app.run(debug=True, threaded=True)`.
+
 ### Versions
 
 Node - 8.1.4
 NPM - 5.0.3
+
+## Troubleshooting
+
+Cache busting is not implemented. The browser cache stores the bundled files and if there are changes to the React source files, they are not displayed in the browser unless a hard refresh is performed.
+
+### Hard Refresh
+
+In Windows/Linux, Hold down Ctrl and click the Reload button.
+In Mac, Hold ⇧ Shift and click the Reload button.
+
+## TODO
+
+1. Implement cache busting, so as to serve a new bundle every time there are file changes.
+
+2. Dockerize the app.
