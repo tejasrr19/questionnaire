@@ -48,6 +48,11 @@ export default class App extends React.Component {
     });
   }
 
+  /**
+   * async getQuestions - get all questions from endpoint
+   *
+   * @return {type}
+   */
   async getQuestions() {
     try {
       var questionRes = await fetch(`${config.api}/questions`);
@@ -58,6 +63,12 @@ export default class App extends React.Component {
     }
   }
 
+  /**
+   * findRandomQuestion - Display a random question
+   *
+   * @param  {type} newState
+   * @return {type}
+   */
   findRandomQuestion(newState) {
     this.setState(newState, () => {
       var randomIndex = this.questions.findIndex(x => x.question === newState.question);
@@ -75,6 +86,13 @@ export default class App extends React.Component {
     });
   }
 
+
+  /**
+   * async handleFormSubmit - Save answer on the backend and display count
+   *
+   * @param  {type} event
+   * @return {type}
+   */
   async handleFormSubmit(event) {
     event.preventDefault();
 
@@ -110,6 +128,11 @@ export default class App extends React.Component {
     this.setState({open: false});
   }
 
+  /**
+   * async handleAnotherQuestion - get a new question to display
+   *
+   * @return {type}
+   */
   async handleAnotherQuestion() {
     if(this.questions.length === 0) {
       await this.getQuestions();

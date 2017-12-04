@@ -23,3 +23,8 @@ Navigating to `http://localhost:5000` or `http://127.0.0.1:5000` should bring up
 ## Fixes to Backend server
 
 1. The `/questions` endpoint returned only the last question instead of an array of questions. This is fixed by appending each item into the `output` array.
+
+### Versions
+
+Node - 8.1.4
+NPM - 5.0.3
