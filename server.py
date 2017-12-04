@@ -2,8 +2,10 @@ import os
 
 from flask import Flask, request, render_template, Response
 from flask_restful import Resource, Api
+from flask_cors import CORS
 
 app = Flask(__name__, static_folder="./static/dist", template_folder="./static")
+CORS(app)
 api = Api(app)
 
 question_id_serial = 2

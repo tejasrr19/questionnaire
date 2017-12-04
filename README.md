@@ -14,6 +14,9 @@ $ npm install
 // Build the React Application
 $ npm run dev-build
 
+// Add Python dependencies
+pip install -r requirements.txt
+
 // Run the Python Rest Server
 $ python server.py
 ```
