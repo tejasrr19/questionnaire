@@ -27,12 +27,14 @@ Navigating to `http://localhost:5000` or `http://127.0.0.1:5000` should bring up
 
 1. The `/questions` endpoint returned only the last question instead of an array of questions. This is fixed by appending each item into the `output` array.
 
-2. Handled Flash requests concurrently by setting `app.run(debug=True, threaded=True)`.
+2. Handled Flask requests concurrently by setting `app.run(debug=True, threaded=True)`.
 
 ### Versions
 
 Node - 8.1.4
 NPM - 5.0.3
+pip - 9.0.1
+Python - 2.7.13
 
 ## Troubleshooting
 
